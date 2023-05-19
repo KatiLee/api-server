@@ -20,7 +20,7 @@ app.get('/coffee', async(req, res, next) => {
     res.status(200).send(coffees);
 });
 
-app.post('/coffee', async(rec, res, next) =>{
+app.post('/coffee', async(req, res, next) =>{
     let newCoffee = await coffeeModel.create(req.body);
 
     res.status(200).send(newCoffee);
