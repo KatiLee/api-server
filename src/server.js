@@ -2,14 +2,17 @@
 
 const express = require('express');
 const cors = require('cors');
-const { coffeeModel } = require('./models');
+const coffeeRouter = require('./routes/coffee');
+const orderRouter = require('./routes/order');
+// const { coffeeModel } = require('./models');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-const coffeeRouter = require('./routes/coffee');
-const coffee = require('./models/coffee');
 
+// const coffee = require('./models/coffee');
+app.use(coffeeRouter);
+app.use(orderRouter);
 
 app.get('/', (req, res, next) => {
     res.status(200).send('The bread has risen');
