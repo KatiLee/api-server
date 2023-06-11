@@ -12,6 +12,10 @@ const sequelizeDatabase = new Sequelize(DATABASE_URL);
 const coffeeModel = coffee(sequelizeDatabase, DataTypes);
 const orderModel = order(sequelizeDatabase, DataTypes);
 
+coffeeModel.hasOne(orderModel, { foreignKey: 'coffeeId' });
+coffeeModel.hasMany(orderModel, { foreignKey: 'coffeeId' });
+orderModel.belongsTo(coffeeModel, { foreignKey: 'coffeeId' });
+
 module.exports = {
     sequelizeDatabase,
     coffeeModel,
